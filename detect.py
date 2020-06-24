@@ -98,7 +98,7 @@ def detect(save_img=False):
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         with open(save_path[:save_path.rfind('.')] + '.txt', 'a') as file:
-                            to_write = ('%g ' * 5) % (cls, *xywh) + " " + conf + "\n"
+                            to_write = ('%g ' * 5) % (cls, *xywh) + " " + str(conf.numpy()) + "\n"
                             file.write(to_write)  # label format
 
                     if save_img or view_img:  # Add bbox to image
